@@ -69,8 +69,6 @@ python -m venv venv
 
 Обновите pip:
 
-css
-Копировать код
 pip install --upgrade pip
 
 ---
