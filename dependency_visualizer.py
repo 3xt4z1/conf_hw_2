@@ -54,13 +54,14 @@ def build_dependency_graph(repo_path, commits):
     return graph
 
 def generate_dot(graph):
-    """Генерирует описание графа в формате DOT."""
+    """Генерирует описание графа в формате DOT с упорядоченными ребрами."""
     dot = 'digraph dependencies {\n'
-    for parent, children in graph.items():
-        for child in children:
+    for parent in sorted(graph.keys()):
+        for child in sorted(graph[parent]):
             dot += f'    "{parent}" -> "{child}";\n'
     dot += '}'
     return dot
+
 
 def visualize_graph(dot_content, graphviz_path):
     """Визуализирует граф с помощью Graphviz."""

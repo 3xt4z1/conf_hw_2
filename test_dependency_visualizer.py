@@ -1,5 +1,7 @@
 import unittest
 from unittest.mock import patch, MagicMock
+from dependency_visualizer import get_commits_with_file, generate_dot
+
 
 class TestDependencyVisualizer(unittest.TestCase):
 
@@ -24,8 +26,8 @@ class TestDependencyVisualizer(unittest.TestCase):
         dot = generate_dot(graph)
         expected_dot = (
             'digraph dependencies {\n'
-            '    "." -> "src";\n'
             '    "." -> "README.md";\n'
+            '    "." -> "src";\n'
             '    "src" -> "src/main.py";\n'
             '    "src" -> "src/utils.py";\n'
             '}'
